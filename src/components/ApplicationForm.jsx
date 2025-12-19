@@ -40,25 +40,36 @@ export default function ApplicationForm({ onAdd }) {
     }
   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
+  return (<div className="border-2 rounded-lg px-2 py-1"><h2 className="font-semibold mx-1">ADD APPLICATION</h2>
+    <form onSubmit={handleSubmit} className="flex">
+      <div className="flex flex-col w-1/4">
+      <input className="border-2 rounded-lg mx-1 my-1 px-1"
         name="company"
         placeholder="Company"
         value={form.company}
         onChange={handleChange}
       />
-      {errors.company && <p>{errors.company}</p>}
+      {errors.company && <p className="text-red-500 text-sm">{errors.company}</p>}
+      </div>
+
+
+
+
+      <div className="flex flex-col w-1/4">
+      
 
       <input
+      className="border-2 rounded-lg mx-1 my-1 px-1"
         name="role"
         placeholder="Role"
         value={form.role}
         onChange={handleChange}
       />
-      {errors.role && <p>{errors.role}</p>}
+      {errors.role && <p className="text-red-500 text-sm">{errors.role}</p>}</div>
+      <div className="flex flex-col w-1/4">
 
       <select
+      className="border-2 rounded-lg mx-1 my-1 px-1"
         name="status"
         value={form.status}
         onChange={handleChange}
@@ -67,9 +78,9 @@ export default function ApplicationForm({ onAdd }) {
         <option>Interview</option>
         <option>Offer</option>
         <option>Rejected</option>
-      </select>
+      </select></div>
 
-      <button >Add Application</button>
-    </form>
+      <button className="border-2 rounded-lg  px-1 h-10 bg-gray-400  hover:bg-gray-500" >Add </button>
+    </form></div>
   );
 }

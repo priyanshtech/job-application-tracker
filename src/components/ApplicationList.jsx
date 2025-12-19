@@ -8,7 +8,7 @@ export default function ApplicationList({ applications, onDelete }) {
   return (
     <ul>
       {applications.map(app => (
-        <li  className="border-2 rounded-lg px-2 py-1"key={app.id}>
+        <li  className="border-2 rounded-lg px-2 py-1 my-1"key={app.id}>
           <p>Company:{app.company}</p>
           <p>Role: {app.role}</p>
           <p>Status: {app.status}</p>
