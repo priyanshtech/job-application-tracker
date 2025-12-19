@@ -1,4 +1,4 @@
-import ApplicationItem from "./ApplicationItem";
+
 
 export default function ApplicationList({ applications, onDelete }) {
   if (applications.length === 0) {
@@ -8,11 +8,11 @@ export default function ApplicationList({ applications, onDelete }) {
   return (
     <ul>
       {applications.map(app => (
-        <ApplicationItem
-          key={app.id}
-          application={app}
-          onDelete={onDelete}
-        />
+        <li  className="border-2 rounded-lg px-2 py-1"key={app.id}>
+          <p>Company:{app.company}</p>
+          <p>Role: {app.role}</p>
+          <p>Status: {app.status}</p>
+          <button className="border-2 px-1 rounded-lg bg-red-300 hover:bg-red-400 hover:scale-102" onClick={() => onDelete(app.id)}>Delete</button></li>
       ))}
     </ul>
   );
