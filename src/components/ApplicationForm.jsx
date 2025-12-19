@@ -21,16 +21,16 @@ export default function ApplicationForm({ onAdd }) {
     e.preventDefault();
 
     const newErrors = {};
-    if (!form.company.trim()) {
+    if (!form.company) {
       newErrors.company = "Company is required";
     }
-    if (!form.role.trim()) {
+    if (!form.role) {
       newErrors.role = "Role is required";
     }
 
     setErrors(newErrors);
 
-    if (Object.keys(newErrors).length === 0) {
+    if (Object.keys(errors).length === 0){
       onAdd(form);
       setForm({
         company: "",
@@ -40,47 +40,51 @@ export default function ApplicationForm({ onAdd }) {
     }
   }
 
-  return (<div className="border-2 rounded-lg px-2 py-1"><h2 className="font-semibold mx-1">ADD APPLICATION</h2>
-    <form onSubmit={handleSubmit} className="flex">
+        return (
+        <div className="border-2 rounded-lg px-2 py-1">
+          <h2 className="font-semibold mx-1">ADD APPLICATION</h2>
+          
+          
+        <form onSubmit={handleSubmit} className="flex">
+
+            <div className="flex flex-col w-1/4">
+                <input className="border-2 rounded-lg mx-1 my-1 px-1"
+                  name="company"
+                  placeholder="Company"
+                  value={form.company}
+                  onChange={handleChange}
+                />
+                {errors.company && <p className="text-red-500 text-sm">{errors.company}</p>}
+          </div>
+
+
+
+
       <div className="flex flex-col w-1/4">
-      <input className="border-2 rounded-lg mx-1 my-1 px-1"
-        name="company"
-        placeholder="Company"
-        value={form.company}
-        onChange={handleChange}
-      />
-      {errors.company && <p className="text-red-500 text-sm">{errors.company}</p>}
+          <input className="border-2 rounded-lg mx-1 my-1 px-1"
+            name="role"
+            placeholder="Role"
+            value={form.role}
+            onChange={handleChange}
+          />
+          {errors.role && <p className="text-red-500 text-sm">{errors.role}</p>}</div>
+      
+      
+      <div className="flex flex-col w-1/4">
+            <select
+            className="border-2 rounded-lg mx-1 my-1 px-1"
+              name="status"
+              value={form.status}
+              onChange={handleChange}
+            >
+              <option>Applied</option>
+              <option>Interview</option>
+              <option>Offer</option>
+              <option>Rejected</option>
+            </select>
       </div>
 
-
-
-
-      <div className="flex flex-col w-1/4">
-      
-
-      <input
-      className="border-2 rounded-lg mx-1 my-1 px-1"
-        name="role"
-        placeholder="Role"
-        value={form.role}
-        onChange={handleChange}
-      />
-      {errors.role && <p className="text-red-500 text-sm">{errors.role}</p>}</div>
-      <div className="flex flex-col w-1/4">
-
-      <select
-      className="border-2 rounded-lg mx-1 my-1 px-1"
-        name="status"
-        value={form.status}
-        onChange={handleChange}
-      >
-        <option>Applied</option>
-        <option>Interview</option>
-        <option>Offer</option>
-        <option>Rejected</option>
-      </select></div>
-
-      <button className="border-2 rounded-lg  px-1 h-10 bg-gray-400  hover:bg-gray-500" >Add </button>
+      <button className="border-2   rounded-lg  px-1 mx-auto h-10 bg-gray-400  hover:bg-gray-500" >Add </button>
     </form></div>
   );
 }
